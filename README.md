@@ -1,4 +1,4 @@
-# training.concretecms.com
+# marketing.concretecms.com
 
 This repo contains the code for the concretecms.com and concretecms.org marketing websites.
 
