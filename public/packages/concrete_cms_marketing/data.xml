@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <concrete5-cif version="1.0">
     <singlepages>
-        <page name="Get Started" path="/get_started" filename="/get_started.php"
-              pagetype="" description=""
-              package="concrete_cms_marketing">
-        </page>
         <page name="Choose" path="/get-started/choose" filename="/get_started/choose.php"
               pagetype="" description=""
               package="concrete_cms_marketing">

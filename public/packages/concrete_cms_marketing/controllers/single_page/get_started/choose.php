@@ -12,12 +12,12 @@ namespace Concrete\Package\ConcreteCmsMarketing\Controller\SinglePage\GetStarted
 use Concrete\Core\Form\Service\Validation;
 use Concrete\Core\Http\Response;
 use Concrete\Core\Http\ResponseFactory;
-use Concrete\Core\Page\Controller\AccountPageController;
+use Concrete\Core\Page\Controller\PageController;
 use Concrete\Core\Page\Page;
 use Concrete\Core\Support\Facade\Url;
 use Concrete\Core\User\User;
 
-class Choose extends AccountPageController
+class Choose extends PageController
 {
 
     public function change_user()

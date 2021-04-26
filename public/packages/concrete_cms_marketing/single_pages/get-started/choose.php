@@ -40,7 +40,7 @@ $user = new User();
                         </strong>
                     </p>
 
-                    <form action="<?php echo (string)Url::to("/get_started/choose/submit"); ?>" method="post">
+                    <form action="<?php echo (string)Url::to("/get-started/choose/submit"); ?>" method="post">
                         <?php echo $token->output("create_project"); ?>
 
                         <?php
@@ -54,13 +54,13 @@ $user = new User();
 
                             <br>
 
-                            <a href="<?php echo (string)Url::to("/get_started/choose/change_user"); ?>">
+                            <a href="<?php echo (string)Url::to("/get-started/choose/change_user"); ?>">
                                 <?php echo t("Login as someone else"); ?>
                             </a>
                         </p>
 
                         <div class="actions">
-                            <a href="<?php echo (string)Url::to("/get_started"); ?>" class="btn btn-secondary">
+                            <a href="<?php echo (string)Url::to("/get-started/try"); ?>" class="btn btn-secondary">
                                 <?php echo t("Cancel"); ?>
                             </a>
 
