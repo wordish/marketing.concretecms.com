@@ -9,7 +9,7 @@ class Controller extends Package
 
     protected $pkgHandle = 'concrete_cms_marketing';
     protected $appVersionRequired = '9.0.0a1';
-    protected $pkgVersion = '0.80';
+    protected $pkgVersion = '0.81';
     protected $pkgAutoloaderMapCoreExtensions = true;
     protected $pkgAutoloaderRegistries = array(
         'src' => '\PortlandLabs\ConcreteCmsMarketing'
