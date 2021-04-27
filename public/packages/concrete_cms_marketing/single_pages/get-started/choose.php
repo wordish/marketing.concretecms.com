@@ -34,7 +34,7 @@ $user = new User();
                         <?php echo t("We're going to provision a new intranet for you."); ?>
                     </h3>
 
-                    <p class="intro">
+                    <p class="lead">
                         <strong>
                             <?php echo t("Enter the project name so you can find it in your My Profile area later."); ?>
                         </strong>
@@ -44,19 +44,30 @@ $user = new User();
                         <?php echo $token->output("create_project"); ?>
 
                         <?php
-                            // @todo: add hidden fields here to pass the required query parameters
+                        // @todo: add hidden fields here to pass the required query parameters
                         ?>
 
                         <?php echo $form->text("projectName"); ?>
 
                         <p class="change-user">
-                            <?php echo t("You're logged in as <strong>%s</strong>", $user->getUserName()); ?>
+                            <?php if ($user->isRegistered()) { ?>
+                                <?php echo t("You're logged in as <strong>%s</strong>", $user->getUserName()); ?>
 
-                            <br>
+                                <br>
 
-                            <a href="<?php echo (string)Url::to("/get-started/choose/change_user"); ?>">
-                                <?php echo t("Login as someone else"); ?>
-                            </a>
+                                <a href="<?php echo (string)Url::to("/get-started/choose/change_user"); ?>"
+                                   class="ccm-login-popup">
+                                    <?php echo t("Login as someone else"); ?>
+                                </a>
+                            <?php } else { ?>
+                                <?php echo t("You're not logged in"); ?>
+
+                                <br>
+
+                                <a href="<?php echo (string)Url::to("/login"); ?>">
+                                    <?php echo t("Login now"); ?>
+                                </a>
+                            <?php } ?>
                         </p>
 
                         <div class="actions">
