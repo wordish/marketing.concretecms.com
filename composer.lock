@@ -498,12 +498,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/concrete5/concrete_cms_theme.git",
-                "reference": "a5d74b66b345d814296d00e14acaf29871b33987"
+                "reference": "a10375cc9c4758b1338f0f7db8ea5ae2b379ef1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/concrete5/concrete_cms_theme/zipball/a5d74b66b345d814296d00e14acaf29871b33987",
-                "reference": "a5d74b66b345d814296d00e14acaf29871b33987",
+                "url": "https://api.github.com/repos/concrete5/concrete_cms_theme/zipball/a10375cc9c4758b1338f0f7db8ea5ae2b379ef1d",
+                "reference": "a10375cc9c4758b1338f0f7db8ea5ae2b379ef1d",
                 "shasum": ""
             },
             "type": "concrete5-package",
@@ -512,7 +512,7 @@
                 "MIT"
             ],
             "description": "Package that contains the official ConcreteCMS Theme.",
-            "time": "2021-04-26T21:38:12+00:00"
+            "time": "2021-04-29T21:38:18+00:00"
         },
         {
             "name": "concrete5/core",
@@ -520,12 +520,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/concrete5/concrete5-core.git",
-                "reference": "9b5c3000abd3e7a83c815240357aa696c33742eb"
+                "reference": "22150ed5185d0fbf18677d87037537cf40dbf4f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/concrete5/concrete5-core/zipball/9b5c3000abd3e7a83c815240357aa696c33742eb",
-                "reference": "9b5c3000abd3e7a83c815240357aa696c33742eb",
+                "url": "https://api.github.com/repos/concrete5/concrete5-core/zipball/22150ed5185d0fbf18677d87037537cf40dbf4f4",
+                "reference": "22150ed5185d0fbf18677d87037537cf40dbf4f4",
                 "shasum": ""
             },
             "require": {
@@ -634,7 +634,7 @@
                 "concrete5",
                 "concreteCMS"
             ],
-            "time": "2021-04-26T21:31:47+00:00"
+            "time": "2021-04-29T18:41:20+00:00"
         },
         {
             "name": "concrete5/dependency-patches",
@@ -10476,6 +10476,55 @@
                 "validate"
             ],
             "time": "2020-07-08T17:02:28+00:00"
+        },
+        {
+            "name": "wikimedia/composer-merge-plugin",
+            "version": "v1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wikimedia/composer-merge-plugin.git",
+                "reference": "81c6ac72a24a67383419c7eb9aa2b3437f2ab100"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wikimedia/composer-merge-plugin/zipball/81c6ac72a24a67383419c7eb9aa2b3437f2ab100",
+                "reference": "81c6ac72a24a67383419c7eb9aa2b3437f2ab100",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "composer/composer": "~1.0.0",
+                "jakub-onderka/php-parallel-lint": "~0.8",
+                "phpunit/phpunit": "~4.8|~5.0",
+                "squizlabs/php_codesniffer": "~2.1.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                },
+                "class": "Wikimedia\\Composer\\MergePlugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Wikimedia\\Composer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bryan Davis",
+                    "email": "bd808@wikimedia.org"
+                }
+            ],
+            "description": "Composer plugin to merge multiple composer.json files",
+            "time": "2017-04-25T02:31:25+00:00"
         }
     ],
     "aliases": [],
