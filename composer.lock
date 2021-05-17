@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e1fe5a23174a6318b989d372d3aed17d",
+    "content-hash": "e423633bc1fd6544e337b893fb6ce617",
     "packages": [
         {
             "name": "anahkiasen/html-object",
@@ -495,20 +495,24 @@
         {
             "name": "concrete5/concrete_cms_theme",
             "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/concrete5/concrete_cms_theme.git",
+                "reference": "e85c28f473671bd85bbb199de0d9fae2a1e44429"
+            },
             "dist": {
-                "type": "path",
-                "url": "../concrete_cms_theme",
-                "reference": "af4cb8139c7beee3c249e8b93701e2affcab9e38"
+                "type": "zip",
+                "url": "https://api.github.com/repos/concrete5/concrete_cms_theme/zipball/e85c28f473671bd85bbb199de0d9fae2a1e44429",
+                "reference": "e85c28f473671bd85bbb199de0d9fae2a1e44429",
+                "shasum": ""
             },
             "type": "concrete5-package",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "Package that contains the official ConcreteCMS Theme.",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "time": "2021-05-17T23:12:58+00:00"
         },
         {
             "name": "concrete5/core",
