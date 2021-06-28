@@ -527,12 +527,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/concrete5/concrete_cms_theme.git",
-                "reference": "056e55d3f03cd0a459ed56f9a3c866a86aa76235"
+                "reference": "371702f4642300143bbc90d320627a7c5aca6f53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/concrete5/concrete_cms_theme/zipball/056e55d3f03cd0a459ed56f9a3c866a86aa76235",
-                "reference": "056e55d3f03cd0a459ed56f9a3c866a86aa76235",
+                "url": "https://api.github.com/repos/concrete5/concrete_cms_theme/zipball/371702f4642300143bbc90d320627a7c5aca6f53",
+                "reference": "371702f4642300143bbc90d320627a7c5aca6f53",
                 "shasum": ""
             },
             "default-branch": true,
@@ -546,7 +546,7 @@
                 "issues": "https://github.com/concrete5/concrete_cms_theme/issues",
                 "source": "https://github.com/concrete5/concrete_cms_theme/tree/master"
             },
-            "time": "2021-06-23T22:34:53+00:00"
+            "time": "2021-06-28T17:20:27+00:00"
         },
         {
             "name": "concrete5/core",
@@ -554,18 +554,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/concrete5/concrete5-core.git",
-                "reference": "8d8aa973f7af3ab21a26d2d88c9098301c87ad2e"
+                "reference": "f997048a4ca93923b9851964c8219d4d4709a602"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/concrete5/concrete5-core/zipball/8d8aa973f7af3ab21a26d2d88c9098301c87ad2e",
-                "reference": "8d8aa973f7af3ab21a26d2d88c9098301c87ad2e",
+                "url": "https://api.github.com/repos/concrete5/concrete5-core/zipball/f997048a4ca93923b9851964c8219d4d4709a602",
+                "reference": "f997048a4ca93923b9851964c8219d4d4709a602",
                 "shasum": ""
             },
             "require": {
                 "anahkiasen/html-object": "~1.4",
                 "bernard/bernard": "1.0.0-alpha9",
-                "commerceguys/addressing": "^1.0",
+                "commerceguys/addressing": "^1.2.0",
                 "concrete5/doctrine-xml": "^1.2.0",
                 "concrete5/oauth-user-data": "~1.0",
                 "concrete5/zend-queue": "0.9.*",
@@ -680,7 +680,7 @@
                 "slack": "https://www.concrete5.org/slack",
                 "source": "http://documentation.concrete5.org/api/"
             },
-            "time": "2021-06-17T17:04:30+00:00"
+            "time": "2021-06-28T17:13:21+00:00"
         },
         {
             "name": "concrete5/dependency-patches",
