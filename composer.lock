@@ -527,12 +527,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/concrete5/concrete_cms_theme.git",
-                "reference": "de2cee92e3a5ffd75594b15ceb14fb57090baed1"
+                "reference": "811f064980736adba141d85d96510f4bf6117817"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/concrete5/concrete_cms_theme/zipball/de2cee92e3a5ffd75594b15ceb14fb57090baed1",
-                "reference": "de2cee92e3a5ffd75594b15ceb14fb57090baed1",
+                "url": "https://api.github.com/repos/concrete5/concrete_cms_theme/zipball/811f064980736adba141d85d96510f4bf6117817",
+                "reference": "811f064980736adba141d85d96510f4bf6117817",
                 "shasum": ""
             },
             "default-branch": true,
@@ -546,7 +546,7 @@
                 "issues": "https://github.com/concrete5/concrete_cms_theme/issues",
                 "source": "https://github.com/concrete5/concrete_cms_theme/tree/master"
             },
-            "time": "2021-06-30T03:49:34+00:00"
+            "time": "2021-06-30T20:21:01+00:00"
         },
         {
             "name": "concrete5/core",
@@ -554,12 +554,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/concrete5/concrete5-core.git",
-                "reference": "f997048a4ca93923b9851964c8219d4d4709a602"
+                "reference": "107efce0037c4b3f18e27dc2502807279f628409"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/concrete5/concrete5-core/zipball/f997048a4ca93923b9851964c8219d4d4709a602",
-                "reference": "f997048a4ca93923b9851964c8219d4d4709a602",
+                "url": "https://api.github.com/repos/concrete5/concrete5-core/zipball/107efce0037c4b3f18e27dc2502807279f628409",
+                "reference": "107efce0037c4b3f18e27dc2502807279f628409",
                 "shasum": ""
             },
             "require": {
@@ -680,7 +680,7 @@
                 "slack": "https://www.concrete5.org/slack",
                 "source": "http://documentation.concrete5.org/api/"
             },
-            "time": "2021-06-28T17:13:21+00:00"
+            "time": "2021-06-30T22:06:09+00:00"
         },
         {
             "name": "concrete5/dependency-patches",
@@ -4964,16 +4964,16 @@
         },
         {
             "name": "portlandlabs/newrelic",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PortlandLabs/newrelic.git",
-                "reference": "01a9267146d4136663b70c29ec6d301baba60ca0"
+                "reference": "402debf0b787db6f53ab56e37f5c95c6c0567029"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PortlandLabs/newrelic/zipball/01a9267146d4136663b70c29ec6d301baba60ca0",
-                "reference": "01a9267146d4136663b70c29ec6d301baba60ca0",
+                "url": "https://api.github.com/repos/PortlandLabs/newrelic/zipball/402debf0b787db6f53ab56e37f5c95c6c0567029",
+                "reference": "402debf0b787db6f53ab56e37f5c95c6c0567029",
                 "shasum": ""
             },
             "type": "library",
@@ -4993,10 +4993,10 @@
             ],
             "description": "Apply standard newrelic transaction stuff automatically",
             "support": {
-                "source": "https://github.com/PortlandLabs/newrelic/tree/1.0.1",
+                "source": "https://github.com/PortlandLabs/newrelic/tree/1.0.2",
                 "issues": "https://github.com/PortlandLabs/newrelic/issues"
             },
-            "time": "2021-06-28T21:54:26+00:00"
+            "time": "2021-06-30T05:03:02+00:00"
         },
         {
             "name": "predis/predis",
