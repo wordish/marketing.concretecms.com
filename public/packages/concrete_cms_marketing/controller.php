@@ -3,6 +3,7 @@
 namespace Concrete\Package\ConcreteCmsMarketing;
 
 use Concrete\Core\Package\Package;
+use PortlandLabs\ConcreteCmsMarketing\ServiceProvider;
 
 class Controller extends Package
 {
@@ -40,6 +41,7 @@ class Controller extends Package
     
     public function on_start()
     {
-        
+        $provider = $this->app->make(ServiceProvider::class);
+        $provider->register();
     }
 }
