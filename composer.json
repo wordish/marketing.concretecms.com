@@ -32,7 +32,13 @@
     "hautelook/phpass": "*"
   },
   "config": {
-    "preferred-install": "dist"
+    "preferred-install": "dist",
+    "allow-plugins": {
+      "mlocati/composer-patcher": true,
+      "wikimedia/composer-merge-plugin": true,
+      "composer/installers": true,
+      "kylekatarnls/update-helper": true
+    }
   },
   "extra": {
     "allow-subpatches": [
