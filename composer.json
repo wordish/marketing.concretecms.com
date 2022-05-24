@@ -19,7 +19,7 @@
     "concrete5/core": "9.0.2",
     "concrete5/dependency-patches": "^1.4.0",
     "vlucas/phpdotenv": "^2.4",
-    "concrete5/concrete_cms_theme": "dev-master",
+    "concretecms/concrete_cms_theme": "dev-master",
     "concrete5/migration_tool": "dev-master",
     "portlandlabs/newrelic": "^1.0"
   },
