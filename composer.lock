@@ -785,12 +785,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/concretecms/concrete_cms_theme.git",
-                "reference": "a03e1fcae7ea0d7961ba546e78004eff0c1ba089"
+                "reference": "c2735fe8b3d75a057c0acd926e900e170b992dd1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/concretecms/concrete_cms_theme/zipball/a03e1fcae7ea0d7961ba546e78004eff0c1ba089",
-                "reference": "a03e1fcae7ea0d7961ba546e78004eff0c1ba089",
+                "url": "https://api.github.com/repos/concretecms/concrete_cms_theme/zipball/c2735fe8b3d75a057c0acd926e900e170b992dd1",
+                "reference": "c2735fe8b3d75a057c0acd926e900e170b992dd1",
                 "shasum": ""
             },
             "default-branch": true,
@@ -804,7 +804,7 @@
                 "issues": "https://github.com/concretecms/concrete_cms_theme/issues",
                 "source": "https://github.com/concretecms/concrete_cms_theme/tree/master"
             },
-            "time": "2022-05-24T16:02:19+00:00"
+            "time": "2022-05-25T17:57:00+00:00"
         },
         {
             "name": "container-interop/container-interop",
