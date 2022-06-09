@@ -799,12 +799,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/concretecms/concrete_cms_theme.git",
-                "reference": "b8e6eb09064ac0999a39a9833e3fc6e31a6f8273"
+                "reference": "a1b9d42543bf70af9ef73985e4e008b9973cab1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/concretecms/concrete_cms_theme/zipball/b8e6eb09064ac0999a39a9833e3fc6e31a6f8273",
-                "reference": "b8e6eb09064ac0999a39a9833e3fc6e31a6f8273",
+                "url": "https://api.github.com/repos/concretecms/concrete_cms_theme/zipball/a1b9d42543bf70af9ef73985e4e008b9973cab1c",
+                "reference": "a1b9d42543bf70af9ef73985e4e008b9973cab1c",
                 "shasum": ""
             },
             "default-branch": true,
@@ -818,7 +818,7 @@
                 "issues": "https://github.com/concretecms/concrete_cms_theme/issues",
                 "source": "https://github.com/concretecms/concrete_cms_theme/tree/master"
             },
-            "time": "2022-06-02T23:01:53+00:00"
+            "time": "2022-06-09T17:19:17+00:00"
         },
         {
             "name": "dapphp/securimage",
