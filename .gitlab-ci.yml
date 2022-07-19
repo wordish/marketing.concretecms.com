@@ -1,4 +1,4 @@
-image: registry.gitlab.com/portlandlabs/containers/php/8.1:latest
+image: registry.gitlab.com/portlandlabs/containers/php/7.4:latest
 
 stages:
   - test
@@ -15,11 +15,23 @@ include:
   - template: Dependency-Scanning.gitlab-ci.yml
 #  - template: License-Scanning.gitlab-ci.yml
 
+.ssh_key_setup: &ssh_key_setup
+    # Adding support for ssh keys in order to download packages from bitbucket.
+    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan bitbucket.org >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - git config --global user.email "systems@portlandlabs.com"
+    - git config --global user.name "Gitlab CI"
+
 # Test with PHPUnit
 test:phpunit:
   stage: test
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
+    - if: $CI_PIPELINE_SOURCE == 'external_pull_request_event' || $CI_PIPELINE_SOURCE == 'push'
   cache:
     paths:
       - vendor/
@@ -30,6 +42,7 @@ test:phpunit:
         coverage_format: cobertura
         path: coverage.cobertura.xml
   before_script:
+    - *ssh_key_setup
     - composer install --dev --no-interaction --optimize-autoloader
   script:
     - XDEBUG_MODE=coverage vendor/bin/phpunit --configuration phpunit.xml.dist --log-junit=junit.xml --coverage-text --colors=never --coverage-cobertura=coverage.cobertura.xml
@@ -38,7 +51,7 @@ test:phpunit:
 test:phpcs:
   stage: test
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
+    - if: $CI_PIPELINE_SOURCE == 'external_pull_request_event' || $CI_PIPELINE_SOURCE == 'push'
   cache:
     paths:
       - vendor/
@@ -47,38 +60,23 @@ test:phpcs:
       junit: junit.xml
       codequality: phpcs-quality-report.json
   before_script:
+    - *ssh_key_setup
     - composer install --no-interaction --optimize-autoloader
   script:
     - >
       vendor/bin/phpcs --basepath=.
       --report=code --report-junit=junit.xml --report-\\Micheh\\PhpCodeSniffer\\Report\\Gitlab=phpcs-quality-report.json 
-      phpcs.xml.dist src tests public/application
-
-build:resources:
-  image: node:16
-  stage: build
-  artifacts:
-    paths:
-      # Include any files built by node here.
-      - public/application/js/main.js
-      - public/application/css/main.css
-  rules:
-    - if: $CI_COMMIT_BRANCH =~ /(develop|main)/
-  before_script:
-    - npm install
-  script:
-    - npm run prod
+      phpcs.xml.dist tests public/application
 
 build:tar:
   stage: build
-  needs:
-    - build:resources
   artifacts:
     paths:
       - release.tar.gz
   rules:
-    - if: $CI_COMMIT_BRANCH =~ /(develop|main)/
+    - if: $CI_COMMIT_BRANCH =~ /(develop|master)/
   before_script:
+    - *ssh_key_setup
     # Install production dependencies
     - composer install --no-dev --no-interaction --optimize-autoloader
   script:
@@ -123,4 +121,4 @@ deploy:production:
     name: Production deploy
   when: manual
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'push' && $CI_COMMIT_BRANCH == 'main'
+    - if: $CI_PIPELINE_SOURCE == 'push' && $CI_COMMIT_BRANCH == 'master'
