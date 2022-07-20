@@ -10,7 +10,7 @@ if [ "$APPLICATION_NAME" == "marketing.stage.concretecms.com" ]
 then
   echo "export projectdir=\"/home/forge/marketing.stage.concretecms.com\"" > "/tmp/.cdvariables";
   echo "export deploydir=\"/home/forge/marketing.stage.concretecms.com/releases/$DEPLOYMENT_ID\"" >> "/tmp/.cdvariables";
-elif [ "$APPLICATION_NAME" == "www.concretecms.com" ]
+elif [ "$APPLICATION_NAME" == "marketing.concretecms.com" ]
 then
   echo "export projectdir=\"/home/forge/marketing.concretecms.com\"" > "/tmp/.cdvariables";
   echo "export deploydir=\"/home/forge/marketing.concretecms.com/releases/$DEPLOYMENT_ID\"" >> "/tmp/.cdvariables";
