@@ -1,4 +1,5 @@
 <?php
+
 namespace Application\StartingPointPackage\ConcreteCmsMarketing;
 
 use Concrete\Core\Application\Application;
@@ -20,5 +21,4 @@ class Controller extends StartingPointPackage
     {
         return 'Installs the marketing.concretecms.com starting point.';
     }
-    
 }
