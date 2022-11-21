@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<concrete5-cif version="1.0">
+    <singlepages>
+
+
+        <page name="Libraries" path="/dashboard/software_libraries" filename="/dashboard/software_libraries/view.php"
+              pagetype=""
+              description=""
+              package="concrete_cms_releases">
+        </page>
+
+        <page name="Concrete CMS" path="/dashboard/software_libraries/concretecms" filename="/dashboard/software_libraries/concretecms/view.php"
+              pagetype=""
+              description=""
+              package="concrete_cms_releases">
+        </page>
+
+
+        <page name="Add Concrete CMS Release" path="/dashboard/software_libraries/concretecms/add" filename="/dashboard/software_libraries/concretecms/add.php"
+              pagetype=""
+              description=""
+              package="concrete_cms_releases">
+            <attributes>
+                <attributekey handle="exclude_nav">
+                    <value><![CDATA[1]]></value>
+                </attributekey>
+                <attributekey handle="exclude_search_index">
+                    <value><![CDATA[1]]></value>
+                </attributekey>
+            </attributes>
+        </page>
+        <page name="Edit Concrete CMS Release" path="/dashboard/software_libraries/concretecms/edit" filename="/dashboard/software_libraries/concretecms/edit.php"
+              pagetype=""
+              description=""
+              package="concrete_cms_releases">
+            <attributes>
+                <attributekey handle="exclude_nav">
+                    <value><![CDATA[1]]></value>
+                </attributekey>
+                <attributekey handle="exclude_search_index">
+                    <value><![CDATA[1]]></value>
+                </attributekey>
+            </attributes>
+        </page>
+        <page name="View Concrete CMS Release" path="/dashboard/software_libraries/concretecms/details"
+              filename="/dashboard/software_libraries/concretecms/details.php"
+              pagetype=""
+              description=""
+              package="concrete_cms_releases">
+            <attributes>
+                <attributekey handle="exclude_nav">
+                    <value><![CDATA[1]]></value>
+                </attributekey>
+                <attributekey handle="exclude_search_index">
+                    <value><![CDATA[1]]></value>
+                </attributekey>
+            </attributes>
+        </page>
+
+
+    </singlepages>
+
+</concrete5-cif>
