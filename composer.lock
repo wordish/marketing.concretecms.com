@@ -346,12 +346,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/concretecms/concretecms-core.git",
-                "reference": "0847e773c0577c7fdb220a78ec9fe08523e31d4e"
+                "reference": "20e3ec5e628024d50b8092d45bc5b76d60d6fa9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/concretecms/concretecms-core/zipball/0847e773c0577c7fdb220a78ec9fe08523e31d4e",
-                "reference": "0847e773c0577c7fdb220a78ec9fe08523e31d4e",
+                "url": "https://api.github.com/repos/concretecms/concretecms-core/zipball/20e3ec5e628024d50b8092d45bc5b76d60d6fa9e",
+                "reference": "20e3ec5e628024d50b8092d45bc5b76d60d6fa9e",
                 "shasum": ""
             },
             "require": {
@@ -493,7 +493,7 @@
                 "forum": "https://forums.concretecms.org/",
                 "source": "http://documentation.concretecms.org/api/"
             },
-            "time": "2022-10-19T18:09:28+00:00"
+            "time": "2022-11-21T14:39:39+00:00"
         },
         {
             "name": "concrete5/dependency-patches",
