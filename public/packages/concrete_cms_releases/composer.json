@@ -1,0 +1,9 @@
+{
+  "name": "portlandlabs/concrete_cms_releases",
+  "description": "",
+  "type": "concrete5-package",
+  "minimum-stability": "stable",
+  "require": {
+    "composer/semver": "^3.3"
+  }
+}
