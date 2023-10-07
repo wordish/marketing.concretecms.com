@@ -60,4 +60,13 @@
 
     </singlepages>
 
+    <tasks>
+        <task handle="import_new_release" package="concrete_cms_releases"/>
+    </tasks>
+    <tasksets>
+        <taskset handle="concrete_cms_releases" name="Concrete CMS Releases" package="skyline_hub">
+            <task handle="import_new_release"/>
+        </taskset>
+    </tasksets>
+
 </concrete5-cif>

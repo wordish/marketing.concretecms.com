@@ -14,7 +14,7 @@ class Controller extends Package implements ProviderAggregateInterface
 
     protected $pkgHandle = 'concrete_cms_releases';
     protected $appVersionRequired = '9.2.0a1';
-    protected $pkgVersion = '0.80';
+    protected $pkgVersion = '0.90';
     protected $pkgAutoloaderMapCoreExtensions = true;
     protected $pkgAutoloaderRegistries = array(
         'src' => '\PortlandLabs\Concrete\Releases'

@@ -22,7 +22,8 @@
     "vlucas/phpdotenv": "^2.4",
     "concretecms/concrete_cms_theme": "dev-master",
     "concrete5/migration_tool": "dev-master",
-    "portlandlabs/newrelic": "^1.0"
+    "portlandlabs/newrelic": "^1.0",
+    "knplabs/github-api": "^3.12"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.4",
@@ -38,7 +39,8 @@
     "allow-plugins": {
       "composer/installers": true,
       "kylekatarnls/update-helper": true,
-      "mlocati/composer-patcher": true
+      "mlocati/composer-patcher": true,
+      "php-http/discovery": true
     }
   },
   "extra": {
