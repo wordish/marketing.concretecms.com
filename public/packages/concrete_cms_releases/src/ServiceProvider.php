@@ -6,6 +6,7 @@ use Concrete\Core\Api\OpenApi\SourceRegistry;
 use Concrete\Core\Foundation\Service\Provider;
 use PortlandLabs\Concrete\Releases\Api\ApiRouteList;
 use Concrete\Core\Command\Task\Manager as TaskManager;
+use PortlandLabs\Concrete\Releases\Documentation\Api\Client\Provider\ConcreteCmsDocsProvider;
 use PortlandLabs\Concrete\Releases\Task\Controller\ImportNewReleaseController;
 
 class ServiceProvider extends Provider
@@ -28,6 +29,11 @@ class ServiceProvider extends Provider
         $manager->extend('import_new_release', function () {
             return new ImportNewReleaseController();
         });
+
+        $this->app
+            ->when(ConcreteCmsDocsProvider::class)
+            ->needs('$redirectUri')
+            ->give(\URL::to('/dashboard/software_libraries/settings/authorize'));
 
     }
 }

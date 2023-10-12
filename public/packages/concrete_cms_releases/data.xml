@@ -57,6 +57,12 @@
             </attributes>
         </page>
 
+        <page name="Settings" path="/dashboard/software_libraries/settings" filename="/dashboard/software_libraries/settings.php"
+              pagetype=""
+              description=""
+              package="concrete_cms_releases">
+        </page>
+
 
     </singlepages>
 
