@@ -7,5 +7,4 @@ use Doctrine\ORM\EntityRepository;
 class ConcreteReleaseRepository extends EntityRepository
 {
 
-
 }
