@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <concrete5-cif version="1.0">
+    <blocktypes>
+        <blocktype handle="download_concrete_release" package="concrete_cms_releases"/>
+        <blocktype handle="concrete_release_archives" package="concrete_cms_releases"/>
+    </blocktypes>
     <singlepages>
 
 
