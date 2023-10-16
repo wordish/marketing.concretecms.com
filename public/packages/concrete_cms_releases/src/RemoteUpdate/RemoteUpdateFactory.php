@@ -23,10 +23,7 @@ class RemoteUpdateFactory
     public function createFromCurrentRelease(ConcreteRelease $currentRelease): RemoteUpdate
     {
         $releases = $this->entityManager->getRepository(ConcreteRelease::class)
-            ->findAll();
-        usort($releases, function(ConcreteRelease $a, ConcreteRelease $b) {
-            return version_compare($a->getVersionNumber(), $b->getVersionNumber());
-        });
+            ->findAllSortedByVersionNumber();
 
         // Now that we have all our releases sorted by release date, extract the slice of releases after
         // the one that matches our current release.

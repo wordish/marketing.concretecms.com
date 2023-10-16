@@ -37,6 +37,9 @@ class ApiRouteList implements RouteListInterface
                 // backward compatible so it has a slightly out-of-favor syntax and naming.
                 $router->all('/api/remote_update/update_core', [ConcreteReleases::class, 'getRemoteUpdateReleaseInformation']);
                 $router->post('/api/remote_update/inspect_update', [ConcreteReleases::class, 'inspectRemoteUpdate']);
+
+                // Download latest.zip
+                $router->get('/download/latest.zip', [ConcreteReleases::class, 'downloadLatest']);
             });
     }
 

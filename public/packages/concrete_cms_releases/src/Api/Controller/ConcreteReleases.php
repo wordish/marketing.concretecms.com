@@ -46,10 +46,7 @@ class ConcreteReleases extends ApiController
      */
     public function getList()
     {
-        $releases = $this->entityManager->getRepository(ConcreteRelease::class)->findAll();
-        usort($releases, function($a, $b) {
-            return version_compare($b->getVersionNumber(), $a->getVersionNumber());
-        });
+        $releases = $this->entityManager->getRepository(ConcreteRelease::class)->findAllSortedByVersionNumber();
         return new Collection($releases, new ConcreteReleaseTransformer());
     }
 
@@ -153,4 +150,19 @@ class ConcreteReleases extends ApiController
         return new JsonResponse([]);
     }
 
+    public function downloadLatest()
+    {
+        $releases = $this->entityManager->getRepository(ConcreteRelease::class)
+            ->findAllSortedByVersionNumber();
+        foreach ($releases as $release) {
+            if (!$release->isPrerelease()) {
+                $file = $release->getDirectDownloadFile();
+                if ($file) {
+                    $file->trackDownload();
+                    return $file->forceDownload();
+                }
+            }
+        }
+        return new JsonResponse([]);
+    }
 }

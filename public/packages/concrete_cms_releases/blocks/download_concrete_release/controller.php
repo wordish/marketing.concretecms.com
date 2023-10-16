@@ -47,10 +47,7 @@ class Controller extends BlockController
 
     public function view()
     {
-        $releases = $this->app->make(EntityManager::class)->getRepository(ConcreteRelease::class)->findAll();
-        usort($releases, function($a, $b) {
-            return version_compare($b->getVersionNumber(), $a->getVersionNumber());
-        });
+        $releases = $this->app->make(EntityManager::class)->getRepository(ConcreteRelease::class)->findAllSortedByVersionNumber();
         $downloadReleaseType = $this->downloadReleaseType ?? self::RELEASE_TYPE_IDENTIFIER_SPECIFIC_RELEASE;
         if ($downloadReleaseType === self::RELEASE_TYPE_IDENTIFIER_SPECIFIC_RELEASE) {
             $this->set(
