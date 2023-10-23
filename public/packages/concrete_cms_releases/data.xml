@@ -74,7 +74,7 @@
         <task handle="import_new_release" package="concrete_cms_releases"/>
     </tasks>
     <tasksets>
-        <taskset handle="concrete_cms_releases" name="Concrete CMS Releases" package="skyline_hub">
+        <taskset handle="concrete_cms_releases" name="Concrete CMS Releases" package="concrete_cms_releases">
             <task handle="import_new_release"/>
         </taskset>
     </tasksets>
