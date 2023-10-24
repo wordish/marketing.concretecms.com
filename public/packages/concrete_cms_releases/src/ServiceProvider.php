@@ -33,7 +33,9 @@ class ServiceProvider extends Provider
         $this->app
             ->when(ConcreteCmsDocsProvider::class)
             ->needs('$redirectUri')
-            ->give(\URL::to('/dashboard/software_libraries/settings/authorize'));
-
+            ->give(function($app) {
+                $url = \URL::to('/dashboard/software_libraries/settings/authorize');;
+                return $url;
+            });
     }
 }
