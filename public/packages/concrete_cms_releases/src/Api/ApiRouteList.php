@@ -32,6 +32,14 @@ class ApiRouteList implements RouteListInterface
                 $router->get('/api/1.0/libraries/releases/concretecms', [ConcreteReleases::class, 'getList']);
                 $router->get('/api/1.0/libraries/releases/concretecms/{releaseId}', [ConcreteReleases::class, 'getRelease']);
                 $router->get('/api/1.0/libraries/releases/concretecms/getByVersionNumber/{version}', [ConcreteReleases::class, 'getByVersionNumber']);
+
+                // Power the built-in updater found in Concrete CMS. This is old and needs to be
+                // backward compatible so it has a slightly out-of-favor syntax and naming.
+                $router->all('/api/remote_update/update_core', [ConcreteReleases::class, 'getRemoteUpdateReleaseInformation']);
+                $router->post('/api/remote_update/inspect_update', [ConcreteReleases::class, 'inspectRemoteUpdate']);
+
+                // Download latest.zip
+                $router->get('/download/latest.zip', [ConcreteReleases::class, 'downloadLatest']);
             });
     }
 

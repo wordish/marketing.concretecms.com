@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <concrete5-cif version="1.0">
+    <blocktypes>
+        <blocktype handle="download_concrete_release" package="concrete_cms_releases"/>
+        <blocktype handle="concrete_release_archives" package="concrete_cms_releases"/>
+    </blocktypes>
     <singlepages>
 
 
@@ -57,7 +61,22 @@
             </attributes>
         </page>
 
+        <page name="Settings" path="/dashboard/software_libraries/settings" filename="/dashboard/software_libraries/settings.php"
+              pagetype=""
+              description=""
+              package="concrete_cms_releases">
+        </page>
+
 
     </singlepages>
+
+    <tasks>
+        <task handle="import_new_release" package="concrete_cms_releases"/>
+    </tasks>
+    <tasksets>
+        <taskset handle="concrete_cms_releases" name="Concrete CMS Releases" package="concrete_cms_releases">
+            <task handle="import_new_release"/>
+        </taskset>
+    </tasksets>
 
 </concrete5-cif>

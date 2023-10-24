@@ -3,12 +3,16 @@
 namespace PortlandLabs\Concrete\Releases\Api\Controller;
 
 use Concrete\Core\Api\ApiController;
+use Concrete\Core\Http\Request;
 use Doctrine\ORM\EntityManager;
 use League\Fractal\Resource\Collection;
 use PortlandLabs\Concrete\Releases\Api\Transformer\ConcreteReleaseTransformer;
+use PortlandLabs\Concrete\Releases\Api\Transformer\ConcreteRemoteUpdateTransformer;
+use PortlandLabs\Concrete\Releases\Api\Transformer\ConcreteUpdateDiagnosticTransformer;
 use PortlandLabs\Concrete\Releases\Entity\ConcreteRelease;
+use PortlandLabs\Concrete\Releases\RemoteUpdate\DiagnosticFactory;
+use PortlandLabs\Concrete\Releases\RemoteUpdate\RemoteUpdateFactory;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Concrete\Core\Http\Request;
 
 class ConcreteReleases extends ApiController
 {
@@ -42,10 +46,7 @@ class ConcreteReleases extends ApiController
      */
     public function getList()
     {
-        $releases = $this->entityManager->getRepository(ConcreteRelease::class)->findAll();
-        usort($releases, function($a, $b) {
-            return version_compare($b->getVersionNumber(), $a->getVersionNumber());
-        });
+        $releases = $this->entityManager->getRepository(ConcreteRelease::class)->findAllSortedByVersionNumber();
         return new Collection($releases, new ConcreteReleaseTransformer());
     }
 
@@ -106,4 +107,62 @@ class ConcreteReleases extends ApiController
         }
     }
 
+        /**
+     * @OA\Get(
+     *     path="/api/remote_update/inspect_core",
+     *     tags={"releases"},
+     *     summary="Powers the remote updater built into Concrete sites.",
+     *     @OA\Parameter(
+     *         name="APP_VERSION",
+     *         in="query",
+     *         description="Version number",
+     *         required=true
+     *     )
+     * )
+     */
+    public function getRemoteUpdateReleaseInformation()
+    {
+
+        $currentRelease = $this->entityManager->getRepository(ConcreteRelease::class)
+            ->findOneByVersionNumber($this->request->request->get('APP_VERSION') ?? 0);
+        if ($currentRelease) {
+            $remoteUpdate = $this->app->make(RemoteUpdateFactory::class)
+                ->createFromCurrentRelease($currentRelease);
+            if ($remoteUpdate) {
+                return $this->transform($remoteUpdate, new ConcreteRemoteUpdateTransformer());
+            }
+        }
+
+        return new JsonResponse([]);
+    }
+
+    public function inspectRemoteUpdate()
+    {
+        $currentVersion = $this->entityManager->getRepository(ConcreteRelease::class)
+            ->findOneByVersionNumber($this->request->request->get('current_version') ?? 0);
+        $requestedVersion = $this->entityManager->getRepository(ConcreteRelease::class)
+            ->findOneByVersionNumber($this->request->request->get('requested_version') ?? 0);
+        if ($currentVersion && $requestedVersion) {
+            $diagnostic = $this->app->make(DiagnosticFactory::class)
+                ->createFromCurrentAndRequestedRelease($currentVersion, $requestedVersion);
+            return $this->transform($diagnostic, new ConcreteUpdateDiagnosticTransformer());
+        }
+        return new JsonResponse([]);
+    }
+
+    public function downloadLatest()
+    {
+        $releases = $this->entityManager->getRepository(ConcreteRelease::class)
+            ->findAllSortedByVersionNumber();
+        foreach ($releases as $release) {
+            if (!$release->isPrerelease()) {
+                $file = $release->getDirectDownloadFile();
+                if ($file) {
+                    $file->trackDownload();
+                    return $file->forceDownload();
+                }
+            }
+        }
+        return new JsonResponse([]);
+    }
 }
