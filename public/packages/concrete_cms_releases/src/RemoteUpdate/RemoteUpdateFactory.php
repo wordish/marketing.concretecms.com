@@ -28,12 +28,12 @@ class RemoteUpdateFactory
         // Now that we have all our releases sorted by release date, extract the slice of releases after
         // the one that matches our current release.
         $releaseSlice = [];
-		foreach($releases as $v) {
-			if (version_compare($v->getVersionNumber(), $currentRelease->getVersionNumber(), '<=')) {
+        foreach ($releases as $v) {
+            if (version_compare($v->getVersionNumber(), $currentRelease->getVersionNumber(), '<=')) {
                 continue;
-			}
+            }
             $releaseSlice[] = $v;
-		}
+        }
 
         // Now we have a slice of releases that are all the releases after the current release they're upgrading
         // from. So let's move _backwards_ through that slice to find the first release that is available for
@@ -52,7 +52,7 @@ class RemoteUpdateFactory
         // Now flip it back.
         $releaseSlice = array_reverse($releaseSlice);
         if ($pruneFromEnd > 0) {
-            array_splice($releaseSlice, 0 - $pruneFromEnd);
+            array_splice($releaseSlice, -$pruneFromEnd);
         }
 
         $updateToVersion = end($releaseSlice) ?? null;
