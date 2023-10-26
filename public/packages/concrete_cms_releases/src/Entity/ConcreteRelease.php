@@ -268,6 +268,7 @@ class ConcreteRelease implements \JsonSerializable
             'id' => $this->getId(),
             'releaseDate' => $releaseDate,
             'versionNumber' => $this->getVersionNumber(),
+            'versionName' => $this->getVersionName(),
             'md5sum' => $this->getMd5sum(),
             'releaseNotes' => $this->getReleaseNotes(),
             'releaseNotesUrl' => $this->getReleaseNotesUrl(),

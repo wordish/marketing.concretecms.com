@@ -6,8 +6,4 @@
               package="concrete_cms_marketing">
         </page>
     </singlepages>
-    <blocktypes>
-        <blocktype handle="download_concrete" package="concrete_cms_marketing"/>
-        <blocktype handle="concrete_release_list" package="concrete_cms_marketing"/>
-    </blocktypes>
 </concrete5-cif>
