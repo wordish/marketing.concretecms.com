@@ -9,7 +9,8 @@ class ImportNewReleaseCommand extends Command
 {
 
     public function __construct(
-        public readonly string $tag
+        public readonly string $tag,
+        public readonly bool $skipReleaseNotes = false,
     ) {
     }
 
