@@ -5,12 +5,10 @@ namespace PortlandLabs\Concrete\Releases\Api\Client;
 use Concrete\Core\Application\ApplicationAwareInterface;
 use Concrete\Core\Application\ApplicationAwareTrait;
 use Concrete\Core\Http\Request;
-use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use League\OAuth2\Client\Token\AccessToken;
 use PortlandLabs\Concrete\Releases\Api\Client\Authorization\Authorizer;
-use PortlandLabs\Concrete\Releases\Api\Client\Cache\AccessTokenCache;
-use PortlandLabs\Concrete\Releases\Documentation\Api\Client\Provider\ConcreteCmsDocsProvider;
+  use PortlandLabs\Concrete\Releases\Documentation\Api\Client\Provider\ConcreteCmsDocsProvider;
 
 class ClientFactory implements ApplicationAwareInterface
 {
@@ -29,14 +27,25 @@ class ClientFactory implements ApplicationAwareInterface
         if ($accessToken) {
             if (!$accessToken->hasExpired()) {
                 return $accessToken;
-            } else {
-                $accessToken = $this->provider->getAccessToken('refresh_token', [
-                    'refresh_token' => $accessToken->getRefreshToken()
-                ]);
             }
-        } else {
+
+            $refreshToken = $accessToken->getRefreshToken();
+            $accessToken = null;
+            if ($refreshToken) {
+                try {
+                    $accessToken = $this->provider->getAccessToken('refresh_token', [
+                        'refresh_token' => $refreshToken
+                    ]);
+                } catch (\Throwable $e) {
+                    // Unable to get new access token using refresh token
+                }
+            }
+        }
+
+        if (!$accessToken) {
             $accessToken = $this->authorizer->requestNewAccessToken($this->request, $this->provider);
         }
+
         if ($accessToken) {
             $this->authorizer->getAccessTokenCache()->saveToken($this->provider, $accessToken);
         }
