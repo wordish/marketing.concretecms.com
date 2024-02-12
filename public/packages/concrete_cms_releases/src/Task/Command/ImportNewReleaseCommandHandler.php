@@ -204,24 +204,29 @@ This is a release asset joined to the GitHub release object with the label "%s"'
         $release = $this->validateAndRetrieveRelease($command->tag);
 
         $this->output->write(t('Release found to be valid and has not yet been created locally. Ready to import!'));
-        $this->output->write(t('Validating connected documentation user.'));
 
-        $client = $this->clientFactory->createClient($this->docsProvider);
-        $docsResourceOwner = $this->validateVersionHistoryPublishingAndRetrieveResourceOwner(
-            $client, $release
-        );
-        if ($docsResourceOwner) {
-            $this->output->write(
-                t(
-                    'Successfully connected to %s. Docs will be posted on behalf of user %s (%s). Make sure this user has permission to post documentation to the website.',
-                    $_ENV['URL_SITE_DOCUMENTATION'],
-                    $docsResourceOwner['username'],
-                    $docsResourceOwner['email'],
-                )
+        if ($command->skipReleaseNotes) {
+            $this->output->write(t('Release note posting SKIPPED!'));
+        } else {
+            $this->output->write(t('Validating connected documentation user.'));
+            $client = $this->clientFactory->createClient($this->docsProvider);
+            $docsResourceOwner = $this->validateVersionHistoryPublishingAndRetrieveResourceOwner(
+                $client,
+                $release
             );
+            if ($docsResourceOwner) {
+                $this->output->write(
+                    t(
+                        'Successfully connected to %s. Docs will be posted on behalf of user %s (%s). Make sure this user has permission to post documentation to the website.',
+                        $_ENV['URL_SITE_DOCUMENTATION'],
+                        $docsResourceOwner['username'],
+                        $docsResourceOwner['email'],
+                    )
+                );
+            }
+            $releaseNotesResponse = $this->createReleaseNotes($client, $release);
         }
 
-        $releaseNotesResponse = $this->createReleaseNotes($client, $release);
 
         $archiveFileVersion = $this->copyReleaseAssetToFolder($release, self::ASSET_LABEL_ARCHIVE, $folder);
         $archiveRemoteUpdaterFileVersion = $this->copyReleaseAssetToFolder(
@@ -262,7 +267,9 @@ This is a release asset joined to the GitHub release object with the label "%s"'
             $concreteRelease->setIsAvailableForRemoteUpdate(false);
         }
 
-        $concreteRelease->setReleaseNotesUrl($_ENV['URL_SITE_DOCUMENTATION'] . $releaseNotesResponse['path']);
+        if (!$command->skipReleaseNotes) {
+            $concreteRelease->setReleaseNotesUrl($_ENV['URL_SITE_DOCUMENTATION'] . $releaseNotesResponse['path']);
+        }
 
         $this->entityManager->persist($concreteRelease);
         $this->entityManager->flush();
