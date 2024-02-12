@@ -141,9 +141,23 @@ This is a release asset joined to the GitHub release object with the label "%s"'
         return $release;
     }
 
+    private function getVersionHistoryParentPageIdForRelease($release): ?int
+    {
+        $parentIdArray = $this->config->get(
+            'concrete_cms_releases::version_history.version_history_parent_page_id'
+        ) ?? [];
+        $majorVersion = explode('.', $release['tag_name'])[0] ?? null;
+        if ($majorVersion) {
+            if (isset($parentIdArray[$majorVersion])) {
+                return $parentIdArray[$majorVersion];
+            }
+        }
+        return null;
+    }
+
     private function createReleaseNotes(ReleasesApiClient $client, $release): array
     {
-        $parentId = $this->config->get('concrete_cms_releases::version_history.version_history_parent_page_id');
+        $parentId = $this->getVersionHistoryParentPageIdForRelease($release);
         $requestBody = [
             'parent' => $parentId,
             'type' => 'developer_document',
@@ -173,9 +187,9 @@ This is a release asset joined to the GitHub release object with the label "%s"'
         return $addPageResponse;
     }
 
-    private function validateVersionHistoryPublishingAndRetrieveResourceOwner(ReleasesApiClient $client): array
+    private function validateVersionHistoryPublishingAndRetrieveResourceOwner(ReleasesApiClient $client, $release): array
     {
-        $parentId = $this->config->get('concrete_cms_releases::version_history.version_history_parent_page_id');
+        $parentId = $this->getVersionHistoryParentPageIdForRelease($release);
         if (empty($parentId)) {
             throw new \Exception(t('No version history parent ID defined for release notes.'));
         }
@@ -194,7 +208,7 @@ This is a release asset joined to the GitHub release object with the label "%s"'
 
         $client = $this->clientFactory->createClient($this->docsProvider);
         $docsResourceOwner = $this->validateVersionHistoryPublishingAndRetrieveResourceOwner(
-            $client
+            $client, $release
         );
         if ($docsResourceOwner) {
             $this->output->write(
